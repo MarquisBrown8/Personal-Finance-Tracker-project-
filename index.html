@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Finance Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Login Section -->
+  <section id="auth-section">
+    <h1>Login or Sign Up</h1>
+    <form id="auth-form">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password (min 6 chars)" required>
+      <input type="text" id="security-question" placeholder="Your pet's name?" required>
+      <button type="submit">Login / Sign Up</button>
+    </form>
+    <button id="forgot-password-btn">Forgot Password?</button>
+
+    <form id="reset-form" style="display:none; margin-top: 15px;">
+      <p>Answer your security question:</p>
+      <input type="text" id="reset-email" placeholder="Email" required>
+      <input type="text" id="security-answer" placeholder="Your pet's name?" required>
+      <input type="password" id="new-password" placeholder="New Password" required>
+      <button type="submit">Reset Password</button>
+    </form>
+  </section>
+
+  <!-- Main App -->
+  <section id="app-section" style="display:none;">
+    <header>
+      <h1>Personal Finance Tracker</h1>
+      <button id="logout-btn">Logout</button>
+    </header>
+
+    <main>
+      <section class="balance">
+        <h2>Your Balance</h2>
+        <p id="balance">$0.00</p>
+      </section>
+
+      <section class="summary">
+        <div class="income">
+          <h3>Income</h3>
+          <p id="income-amount">$0.00</p>
+        </div>
+        <div class="expenses">
+          <h3>Expenses</h3>
+          <p id="expense-amount">$0.00</p>
+        </div>
+      </section>
+
+      <section class="transaction-form">
+        <h3>Add Transaction</h3>
+        <form id="transaction-form">
+          <input type="text" id="description" placeholder="Description" required>
+          <input type="number" id="amount" placeholder="Amount (e.g. 50)" required>
+          <select id="type">
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+          <button type="submit">Add</button>
+        </form>
+      </section>
+
+      <section class="filter-section">
+        <h3>Filter Transactions</h3>
+        <label for="filter-range">View:</label>
+        <select id="filter-range">
+          <option value="all">All Time</option>
+          <option value="month">This Month</option>
+          <option value="week">This Week</option>
+        </select>
+      </section>
+
+      <section class="transactions">
+        <h3>Transaction History</h3>
+        <ul id="transaction-list"></ul>
+      </section>
+
+      <section class="chart-section">
+        <h3>Spending Overview</h3>
+        <canvas id="financeChart"></canvas>
+      </section>
+
+      <section class="download-section">
+        <button id="download-btn">Download Report (CSV)</button>
+      </section>
+    </main>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
